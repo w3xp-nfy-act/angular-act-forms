@@ -1,0 +1,43 @@
+<form [formGroup]="bookForm" (ngSubmit)="submitForm()">
+    <label class="mat-form-field-label">Buchtitel</label>
+    <input class="mat-form-field" formControlName="title">
+    <bm-form-messages [control]="bookForm.get('title')" controlName="title"></bm-form-messages>
+
+    <label class="mat-form-field-label">Untertitel</label>
+    <input class="mat-form-field" formControlName="subtitle">
+
+    <label class="mat-form-field-label">ISBN</label>
+    <input class="mat-form-field" formControlName="isbn">
+    <bm-form-messages [control]="bookForm.get('isbn')" controlName="isbn"></bm-form-messages>
+
+    <label class="mat-form-field-label">Erscheinungsdatum</label>
+    <input class="mat-form-field" type="date" [value]="bookForm.get('published').value ? bookForm.get('published').value.toISOString().substring(0,10) : null | date:'yyyy.mm.dd'"  formControlName="published">
+    <bm-form-messages [control]="bookForm.get('published')" controlName="published"></bm-form-messages>
+
+    <label class="mat-form-field-label">Authoren</label>
+    <button mat-stroked-button color="primary" type="button" (click)="addAuthorControl()">+ Autor</button>
+    <button mat-stroked-button color="primary" type="button" (click)="removeAuthorControl()" [disabled]="authors.length==1">- Autor</button>
+    <div class="authors" formArrayName="authors">
+        <ng-container *ngFor="let c of authors.controls; index as i">
+            <input class="mat-form-field" [formControlName]="i" placeholder="Autor">
+        </ng-container>
+    </div>
+    <bm-form-messages [control]="bookForm.get('authors')" controlName="authors"></bm-form-messages>
+
+    <label class="mat-form-field-label">Beschreibung</label>
+    <textarea class="mat-form-field" formControlName="description"></textarea>
+
+    <label>Bild</label>
+    <button mat-stroked-button color="primary" type="button" (click)="addThumbnailControl()">+ Bild</button>
+    <button mat-stroked-button color="primary" type="button" (click)="removeThumbnailControl()" [disabled]="thumbnails.length==1">- Bild</button>
+    <ng-container formArrayName="thumbnails">
+        <div class="two-fields"
+             *ngFor="let c of thumbnails.controls; index as i"
+             [formGroupName]="i">
+            <input class="mat-form-field" formControlName="url" placeholder="URL">
+            <input class="mat-form-field" formControlName="title" placeholder="Titel">
+        </div>
+    </ng-container>
+
+    <button mat-stroked-button color="warn" type="submit" [disabled]="bookForm.invalid">Speichern</button>
+</form>

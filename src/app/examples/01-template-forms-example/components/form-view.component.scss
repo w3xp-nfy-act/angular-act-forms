@@ -1,0 +1,11 @@
+p {
+  width: 100%;
+}
+
+.ng-dirty {
+  border: 2px dashed green;
+}
+
+.ng-untouched {
+  border: 2px solid red;
+}

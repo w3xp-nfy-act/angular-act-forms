@@ -1,0 +1,47 @@
+.mat-form-field {
+  margin: 5px 0;
+  display: block;
+  width: 100%;
+}
+
+.two-fields {
+  display: flex;
+}
+
+.two-fields .mat-form-field {
+  display: inline-block;
+  width: 50%;
+}
+
+.two-fields .mat-form-field:last-child {
+  margin-left: 5px;
+}
+
+.authors {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.authors .mat-form-field {
+  width: auto;
+}
+
+.authors .mat-form-field:not(first) {
+  margin-left: 5px;
+}
+
+button[type=button] {
+  margin-left: 10px;
+}
+
+.mat-stroked-button[disabled][disabled] {
+  color: rgba(123, 31, 162, 0.5);
+}
+
+.mat-stroked-button:not([disabled]) {
+  border-color: rgba(123, 31, 162, 0.7);
+}
+
+.mat-form-field-label {
+	color: rgba(0, 0, 0, .7)
+}

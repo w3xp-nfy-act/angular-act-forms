@@ -1,0 +1,28 @@
+<article class="markdown-body">
+    <h1>Template Driven Forms</h1>
+    <app-form-markdown></app-form-markdown>
+    <form #myForm="ngForm" (ngSubmit)="submitForm()">
+        <label>User name</label>
+        <input [(ngModel)]="formData.username"
+               #usernameInput="ngModel"
+               type="text" name="username">
+
+        <div *ngIf="usernameInput.untouched">
+            Dieses Feld ist unberührt.
+        </div>
+
+        <label>Password</label>
+        <input [(ngModel)]="formData.password"
+               required
+               minlength="8"
+               pattern=".*\.*"
+               #passwordInput="ngModel"
+               type="password" name="password">
+
+        <div *ngIf="passwordInput.invalid">
+            Das Passwort ist ungültig.
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</article>
