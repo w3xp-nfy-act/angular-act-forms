@@ -1,5 +1,5 @@
 <article class="markdown-body">
-    <h1>Template Driven Forms</h1>
+    <h1>Template Driven Forms - Markdown example</h1>
     <app-form-markdown></app-form-markdown>
     <ng-template [ngIf]="loadingService.isLoading() | async">
         <form #myForm="ngForm" (ngSubmit)="submitForm()">
@@ -11,7 +11,6 @@
                     Dieses Feld ist unberührt.
                 </div>
             </div>
-
             <div class="frame-input-field">
                 <label>Password</label>
                 <input [(ngModel)]="formData.password" required minlength="8" pattern=".*\.*" #passwordInput="ngModel"
@@ -22,12 +21,8 @@
                 </div>
             </div>
             <div class="frame-button-field">
-<button type="submit">Login</button>
-
+                <button type="submit">Login</button>
             </div>
-
-
-            
         </form>
     </ng-template>
 

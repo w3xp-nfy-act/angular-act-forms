@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { LoadingService } from '../../../shared/services/loading.service';
+import { LoadingService } from '../../../shared/services';
 import { NgForm } from '@angular/forms';
 
 @Component({
