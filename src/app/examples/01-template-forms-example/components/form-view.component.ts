@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import { LoadingService } from '../../../shared/services/loading.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,6 +10,8 @@ import { NgForm } from '@angular/forms';
 
 export class FormComponent implements OnInit {
 
+    constructor(public loadingService: LoadingService) { }
+
     formData = {
         username: '',
         password: ''
@@ -17,12 +20,14 @@ export class FormComponent implements OnInit {
     @ViewChild('myForm', {static: false}) myForm: NgForm;
 
     ngOnInit() {
-        console.log('test');
+        console.log('Form-Component 01: ngOnInit');
+
+        this.loadingService.hideLoader();
     }
 
     submitForm() {
         console.log(this.formData);
-
+        
         this.myForm.reset();
     }
 }

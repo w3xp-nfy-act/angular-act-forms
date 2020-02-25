@@ -1,17 +1,18 @@
 <article class="markdown-body">
     <h1>Reactive Forms</h1>
     <app-form-markdown></app-form-markdown>
-
-    <mat-card>
-    <h3>Create a book example form</h3>
-    <app-form-example (submitBook)="createBook($event)"></app-form-example>
-    </mat-card>
-    <mat-card>
-        <h3>Edit a book example form</h3>
-        <app-form-example *ngIf="book"
-                          (submitBook)="updateBook($event)"
-                          [book]="book"
-                          [editing]="true">
-        </app-form-example>
-    </mat-card>
+    <ng-template [ngIf]="loadingService.isLoading() | async">
+        <mat-card>
+        <h3>Create a book example form</h3>
+        <app-form-example (submitBook)="createBook($event)"></app-form-example>
+        </mat-card>
+        <mat-card>
+            <h3>Edit a book example form</h3>
+            <app-form-example *ngIf="book"
+                            (submitBook)="updateBook($event)"
+                            [book]="book"
+                            [editing]="true">
+            </app-form-example>
+        </mat-card>
+    </ng-template>
 </article>

@@ -1,28 +1,34 @@
 <article class="markdown-body">
     <h1>Template Driven Forms</h1>
     <app-form-markdown></app-form-markdown>
-    <form #myForm="ngForm" (ngSubmit)="submitForm()">
-        <label>User name</label>
-        <input [(ngModel)]="formData.username"
-               #usernameInput="ngModel"
-               type="text" name="username">
+    <ng-template [ngIf]="loadingService.isLoading() | async">
+        <form #myForm="ngForm" (ngSubmit)="submitForm()">
+            <div class="frame-input-field">
+                <label>User name</label>
+                <input [(ngModel)]="formData.username" #usernameInput="ngModel" type="text" name="username">
 
-        <div *ngIf="usernameInput.untouched">
-            Dieses Feld ist unberührt.
-        </div>
+                <div *ngIf="usernameInput.untouched">
+                    Dieses Feld ist unberührt.
+                </div>
+            </div>
 
-        <label>Password</label>
-        <input [(ngModel)]="formData.password"
-               required
-               minlength="8"
-               pattern=".*\.*"
-               #passwordInput="ngModel"
-               type="password" name="password">
+            <div class="frame-input-field">
+                <label>Password</label>
+                <input [(ngModel)]="formData.password" required minlength="8" pattern=".*\.*" #passwordInput="ngModel"
+                    type="password" name="password">
 
-        <div *ngIf="passwordInput.invalid">
-            Das Passwort ist ungültig.
-        </div>
+                <div *ngIf="passwordInput.invalid">
+                    Das Passwort ist ungültig.
+                </div>
+            </div>
+            <div class="frame-button-field">
+<button type="submit">Login</button>
 
-        <button type="submit">Login</button>
-    </form>
+            </div>
+
+
+            
+        </form>
+    </ng-template>
+
 </article>

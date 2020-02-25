@@ -1,4 +1,5 @@
 import {Component, OnInit } from '@angular/core';
+import { LoadingService } from '../../../shared/services/loading.service';
 import {Book, Thumbnail} from "../interfaces/book";
 
 @Component({
@@ -10,7 +11,7 @@ import {Book, Thumbnail} from "../interfaces/book";
 export class ReactiveFormComponent implements OnInit {
     book: Book;
 
-    constructor() {
+    constructor(public loadingService: LoadingService) { 
         this.book = {
             isbn: '1234567890',
             title: 'Book title',
@@ -27,7 +28,9 @@ export class ReactiveFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('test');
+        console.log('Form-Component 02: ngOnInit');
+
+        this.loadingService.hideLoader();
     }
 
     createBook(book: Book) {

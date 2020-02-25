@@ -2,6 +2,19 @@ p {
   width: 100%;
 }
 
+.frame-button-field {
+  padding: 15px;
+  text-align: right;
+  max-width: 300px;
+}
+.frame-input-field {
+  padding: 10px 5px;
+  label {
+    width: 150px;
+    display: inline-block;
+  }
+}
+
 .ng-dirty {
   border: 2px dashed green;
 }
